@@ -15,14 +15,6 @@ export default class CreateExercise extends Component {
       users: [],
     };
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  componentDidlMount() {
     axios
       .get("http://localhost:5000/users/")
       .then((response) => {
@@ -36,6 +28,12 @@ export default class CreateExercise extends Component {
       .catch((err) => {
         console.log(`Error: ${err}`);
       });
+
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeDuration = this.onChangeDuration.bind(this);
+    this.onChangeDate = this.onChangeDate.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChangeUsername(e) {
@@ -79,7 +77,6 @@ export default class CreateExercise extends Component {
           <div className="form-group">
             <label>Username:</label>
             <select
-              ref="userInput"
               required
               className="form-control"
               value={this.state.username}
